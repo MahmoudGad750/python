@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 import os
 
-
+#Amr commented
 #muhammad commented
 
 # Initialize Flask app
