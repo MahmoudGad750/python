@@ -8,8 +8,7 @@ from flask_mail import Mail, Message
 import os
 
 
-
-
+#muhammad commented
 
 # Initialize Flask app
 app = Flask(__name__)
