@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'yourdockerhubusername/library-mgmt'
+        DOCKER_IMAGE = 'mahmoudgad750/python'
         DOCKER_CREDENTIALS_ID = 'dockerhub-creds-id'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/yourusername/your-repo-name.git'
+                git branch: 'main', url: 'https://github.com/MahmoudGad750/python'
             }
         }
 
@@ -34,10 +34,10 @@ pipeline {
 
     post {
         success {
-            echo "Docker image built and pushed to Docker Hub successfully!"
+            echo "Docker image built and pushed successfully!"
         }
         failure {
-            echo "Something went wrong during the build."
+            echo "Pipeline failed."
         }
     }
 }
