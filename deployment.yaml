@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: mahmoudgad750/python:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: SECRET_KEY
+          value: "your-secret"
+        - name: MAIL_USERNAME
+          value: "your_email@example.com"
+        - name: MAIL_PASSWORD
+          value: "your_email_password"
+        - name: ADMIN_PASSWORD
+          value: "admin123"
