@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh '''
-                    sed -i '' "s|image: mahmoudgad750/python:.*|image: mahmoudgad750/python:${BUILD_NUMBER}|" k8s/deployment.yaml
+                    sed -i '' "s|image: mahmoudgad750/python:.*|image: mahmoudgad750/python:${BUILD_NUMBER}|" deployment.yaml
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
                 '''
