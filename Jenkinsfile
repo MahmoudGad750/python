@@ -36,11 +36,21 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to EKS') {
+            steps {
+                sh '''
+                    sed -i '' "s|image: mahmoudgad750/python:.*|image: mahmoudgad750/python:${BUILD_NUMBER}|" k8s/deployment.yaml
+                    kubectl apply -f deployment.yaml
+                    kubectl apply -f service.yaml
+                '''
+            }
+        }
     }
 
     post {
         success {
-            echo "Docker image built and pushed successfully!"
+            echo "Docker image deployed to EKS successfully!"
         }
         failure {
             echo "Pipeline failed."
