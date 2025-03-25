@@ -1,20 +1,17 @@
-# Use an official Python image
+# Use official Python base image
 FROM python:3.10-slim
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Copy all files from your repo to container
+# Copy everything into container
 COPY . .
 
-# Install Python dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create SQLite DB (optional, or let app create on first run)
-# RUN python -c "from your_app_module import db; db.create_all()"
-
-# Expose Flask port
+# Expose the Flask port
 EXPOSE 5000
 
 # Run the app
-CMD ["python", "your_script_name.py"]
+CMD ["python", "app.py"]
