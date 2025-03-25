@@ -40,7 +40,10 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh '''
+                    echo "Updating deployment image to tag ${BUILD_NUMBER}..."
                     sed -i '' "s|image: mahmoudgad750/python:.*|image: mahmoudgad750/python:${BUILD_NUMBER}|" deployment.yaml
+
+                    echo "Applying Kubernetes manifests to EKS..."
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
                 '''
